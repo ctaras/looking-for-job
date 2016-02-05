@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layouts/default/layout-without-footer"
+      lang="en">
+
+<head>
+    <title th:text="#{analysis.vacancy}">analysis</title>
+
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/css/ag-grid.css}"/>
+
+    <script th:src="@{/webjars/ag-grid/3.1.2/dist/ag-grid.min.js}"></script>
+
+    <script src="/js/vacancy-grid-vacancy.js"></script>
+
+</head>
+<body>
+
+<div layout:fragment="content" class="full-height">
+
+    <div id="button-layout">
+
+        <button onclick="gridOptions.api.expandAll()">Expand All</button>
+
+        <button onclick="gridOptions.api.collapseAll()">Collapse All</button>
+
+        <button onclick="sizeToFit()">Size to Fit</button>
+
+        <button onclick="autoSizeAll()">Auto-Size All</button>
+
+    </div>
+
+    <div id="vacancy-grid-wrapper">
+
+        <div id="vacancy-grid" class="ag-fresh"></div>
+
+    </div>
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layouts/default/layout"
+      lang="en">
+
+<head>
+    <title th:text="#{search}">Search</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <h3 th:text="#{company.reference}">Header</h3>
+    <table class="table table-striped datatable">
+        <thead>
+        <tr class="text-uppercase">
+            <th th:text="#{table.head.row_number}">#</th>
+            <th th:text="#{company.id}">thead</th>
+            <th th:text="#{company.caption}">thead</th>
+            <th th:text="#{company.version}">thead</th>
+            <th th:text="#{company.action}">thead</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="company : ${companies}" th:object="${company}">
+            <th scope="row" th:text="${#ids.seq('')}">row</th>
+            <td th:text="*{id}">td</td>
+            <td th:text="*{caption}">td</td>
+            <td th:text="*{version}">td</td>
+            <td>
+                <div class="btn-group">
+                    <a class="btn btn-success" th:text="#{action.show}" th:href="@{/companies/{id}(id=*{id})}">Show</a>
+                    <a class="btn btn-primary" th:text="#{action.edit}"
+                       th:href="@{/companies/{id}(id=*{id},form)}">Edit</a>
+                    <a class="btn btn-danger btn-remove-data" th:text="#{action.remove}"
+                       th:href="@{/companies/{id}(id=*{id},form)}"
+                       th:attr="data-id=*{id}, data-url-redirect=@{/companies/}, data-message=#{question.delete(#{company}, *{id})}">Remove</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

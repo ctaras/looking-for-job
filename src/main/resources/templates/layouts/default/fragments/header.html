@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="en">
+<head>
+    <title>Header page</title>
+</head>
+<body>
+
+<header layout:fragment="header" class="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" th:text="#{application.name}" th:href="@{/}">Project name</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <!--<li class="active"><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>-->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false" th:text="#{header.menu.references}">References<span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu">
+
+                            <li class="dropdown-header" th:text="#{header.menu.references.sites}">Sites</li>
+                            <li><a href="#" th:href="@{/sites/}" th:text="#{header.menu.references.sites.list}">Sites
+                                list</a></li>
+                            <li><a href="#" th:href="@{/sites(form)}" th:text="#{header.menu.references.sites.create}">Sites
+                                list</a></li>
+
+                            <li role="separator" class="divider"></li>
+
+                            <li class="dropdown-header" th:text="#{header.menu.references.vacancies}">Sites</li>
+                            <li><a href="#" th:href="@{/vacancies/}" th:text="#{header.menu.references.vacancies.list}">Sites
+                                list</a></li>
+                            <li><a href="#" th:href="@{/vacancies(form)}"
+                                   th:text="#{header.menu.references.vacancies.create}">Sites
+                                list</a></li>
+
+                            <li role="separator" class="divider"></li>
+
+                            <li class="dropdown-header" th:text="#{header.menu.references.companies}">Sites</li>
+                            <li><a href="#" th:href="@{/companies/}" th:text="#{header.menu.references.companies.list}">Sites
+                                list</a></li>
+                            <li><a href="#" th:href="@{/companies(form)}"
+                                   th:text="#{header.menu.references.companies.create}">Sites
+                                list</a></li>
+
+                            <li role="separator" class="divider"></li>
+
+                            <li class="dropdown-header" th:text="#{header.menu.references.cities}">Sites</li>
+                            <li><a href="#" th:href="@{/cities/}" th:text="#{header.menu.references.cities.list}">Sites
+                                list</a></li>
+                            <li><a href="#" th:href="@{/cities(form)}"
+                                   th:text="#{header.menu.references.cities.create}">Sites
+                                list</a></li>
+
+                            <li role="separator" class="divider"></li>
+
+                            <li class="dropdown-header" th:text="#{header.menu.references.regions}">regions</li>
+                            <li><a href="#" th:href="@{/regions/}" th:text="#{header.menu.references.regions.list}">regions
+                                list</a></li>
+                            <li><a href="#" th:href="@{/regions(form)}"
+                                   th:text="#{header.menu.references.regions.create}">Sites
+                                list</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false" th:text="#{header.menu.reports}">Reports<span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu">
+
+                            <li><a href="#" th:href="@{/reports/top}" th:text="#{header.menu.reports.top}">Sites
+                                list</a></li>
+                            <li><a href="#" th:href="@{/reports/analysis/company}"
+                                   th:text="#{header.menu.reports.analysis.company}">Sites
+                                list</a></li>
+
+                            <li><a href="#" th:href="@{/reports/analysis/vacancy}"
+                                   th:text="#{header.menu.reports.analysis.vacancy}">Sites
+                                list</a></li>
+
+                            <li role="separator" class="divider"></li>
+
+                            <li><a href="#" th:href="@{/reports/export}" th:text="#{header.menu.reports.export}">Sites
+                                list</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+</header>
+
+</body>
+</html>

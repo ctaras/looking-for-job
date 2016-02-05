@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layouts/default/layout-full"
+      lang="en">
+
+<head>
+    <title th:text="#{search}">Search</title>
+
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/webjars/datatables/1.10.10/css/jquery.dataTables.min.css}"/>
+
+    <script th:src="@{/webjars/datatables/1.10.10/js/jquery.dataTables.min.js}"></script>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <!--/*/ <th:block th:fragment="list" th:with="df=#{date.format}"> /*/-->
+
+    <h4 th:text="#{vacancy.reference}">Header</h4>
+    <table class="table table-striped datatable vacancy-list">
+        <thead>
+        <tr class="text-uppercase">
+            <th th:text="#{table.head.row_number}">#</th>
+            <th th:text="#{vacancy.caption}">thead</th>
+            <th th:text="#{vacancy.site}">thead</th>
+            <th th:text="#{vacancy.company}">thead</th>
+            <th th:text="#{vacancy.city}">thead</th>
+            <th th:text="#{vacancy.date}">thead</th>
+            <th th:text="#{vacancy.price.max}">thead</th>
+            <th th:text="#{vacancy.price.min}">thead</th>
+            <th th:text="#{vacancy.currency}">thead</th>
+            <th th:text="#{vacancy.price.max.systemcurrency}">thead</th>
+            <th th:text="#{vacancy.price.min.systemcurrency}">thead</th>
+            <th th:text="#{vacancy.currency.systemcurrency}">thead</th>
+            <th th:text="#{vacancy.url}" class="column-vacancy-url">thead</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="vacancy : ${allvacancies}" th:object="${vacancy}">
+            <th scope="row" th:text="${#ids.seq('')}">row</th>
+            <td th:text="*{caption}">td</td>
+            <td th:text="*{siteCaption}">td</td>
+            <td th:text="*{companyCaption}">td</td>
+            <td th:text="*{cityCaption}">td</td>
+            <td th:text="${#calendars.format(vacancy.registrationDate, df)}">td</td>
+            <td th:text="*{priceMax}">td</td>
+            <td th:text="*{priceMin}">td</td>
+            <td th:text="*{currencyCaption}">td</td>
+            <td th:text="*{priceMaxForCourseSystemCurrency}">td</td>
+            <td th:text="*{priceMinForCourseSystemCurrency}">td</td>
+            <td th:text="*{systemCurrencyCaption}">td</td>
+            <td>
+                <div class="btn-group">
+                    <a th:title="@{/vacancies/{id}(id=*{id})}" th:href="@{/vacancies/{id}(id=*{id})}"
+                       th:text="#{vacancy.link.main}" class="btn btn-default" target="_blank">Text</a>
+                    <a th:title="*{url}" th:href="*{url}" th:text="#{vacancy.link.external}"
+                       class="btn btn-default" target="_blank">Text</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!--/*/ </th:block> /*/-->
+
+</div>
+
+
+</body>
+</html>

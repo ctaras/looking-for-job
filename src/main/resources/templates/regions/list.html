@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layouts/default/layout"
+      lang="en">
+
+<head>
+    <title th:text="#{search}">Search</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <!--/*/ <th:block th:fragment="list"> /*/-->
+
+    <h3 th:text="#{siteIDCity.reference}">Header</h3>
+    <table class="table table-striped datatable">
+        <thead>
+        <tr class="text-uppercase">
+            <th th:text="#{table.head.row_number}">#</th>
+            <th th:text="#{siteIDCity.id}">thead</th>
+            <th th:text="#{siteIDCity.site}">thead</th>
+            <th th:text="#{siteIDCity.city}">thead</th>
+            <th th:text="#{siteIDCity.idregion}">thead</th>
+            <th th:text="#{siteIDCity.version}">thead</th>
+            <th th:text="#{siteIDCity.action}">thead</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="region : ${sitesIDsCities}" th:object="${region}">
+            <th scope="row" th:text="${#ids.seq('')}">row</th>
+            <td th:text="*{id}">td</td>
+            <td th:text="*{site.caption}">td</td>
+            <td th:text="*{city.caption}">td</td>
+            <td th:text="*{idRegion}">td</td>
+            <td th:text="*{version}">td</td>
+            <td>
+                <div class="btn-group">
+                    <a class="btn btn-success" th:text="#{action.show}" th:href="@{/regions/{id}(id=*{id})}">Show</a>
+                    <a class="btn btn-primary" th:text="#{action.edit}"
+                       th:href="@{/regions/{id}(id=*{id},form)}">Edit</a>
+                    <a class="btn btn-danger btn-remove-data" th:text="#{action.remove}"
+                       th:href="@{/regions/{id}(id=*{id},form)}"
+                       th:attr="data-id=*{id}, data-url-redirect=@{/regions/}, data-message=#{question.delete(#{region}, *{id})}">Remove</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!--/*/ </th:block> /*/-->
+
+</div>
+
+</body>
+</html>

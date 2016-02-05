@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
+<!-- 2016-02-03T12:07:58 -->
+<jasperReport xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="Vacancy_Export_A4_Landscape_Table_Based" pageWidth="1684" pageHeight="1190" orientation="Landscape"
+              whenNoDataType="AllSectionsNoDetail" columnWidth="1684" leftMargin="0" rightMargin="0" topMargin="0"
+              bottomMargin="0" resourceBundle="messages/messages" uuid="8ff6fbc6-006d-4cf9-a537-1117461ef7d8">
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+    <property name="com.jaspersoft.studio.unit." value="pixel"/>
+    <import value="net.sf.jasperreports.engine.*"/>
+    <import value="java.util.*"/>
+    <import value="ua.chuchvaga.taras.lookingjob.model.VacancyModel"/>
+    <import value="ua.chuchvaga.taras.lookingjob.model.report.VacancyReportBean"/>
+    <import value="net.sf.jasperreports.engine.data.*"/>
+    <style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+            <topPen lineWidth="0.5" lineColor="#000000"/>
+            <leftPen lineWidth="0.5" lineColor="#000000"/>
+            <bottomPen lineWidth="0.5" lineColor="#000000"/>
+            <rightPen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="Table_CH" mode="Opaque" backcolor="#FFFFFF">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+            <topPen lineWidth="0.5" lineColor="#000000"/>
+            <leftPen lineWidth="0.5" lineColor="#000000"/>
+            <bottomPen lineWidth="0.5" lineColor="#000000"/>
+            <rightPen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+            <topPen lineWidth="0.5" lineColor="#000000"/>
+            <leftPen lineWidth="0.5" lineColor="#000000"/>
+            <bottomPen lineWidth="0.5" lineColor="#000000"/>
+            <rightPen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <subDataset name="Dataset1" resourceBundle="messages/messages" uuid="00534f8c-2ec3-420f-a731-00bca9c36397">
+        <queryString>
+            <![CDATA[]]>
+        </queryString>
+        <field name="class" class="java.lang.Class">
+            <fieldDescription><![CDATA[class]]></fieldDescription>
+        </field>
+        <field name="id" class="java.lang.Long">
+            <fieldDescription><![CDATA[id]]></fieldDescription>
+        </field>
+        <field name="version" class="java.lang.Integer">
+            <fieldDescription><![CDATA[version]]></fieldDescription>
+        </field>
+        <field name="caption" class="java.lang.String">
+            <fieldDescription><![CDATA[caption]]></fieldDescription>
+        </field>
+        <field name="companyCaption" class="java.lang.String">
+            <fieldDescription><![CDATA[companyCaption]]></fieldDescription>
+        </field>
+        <field name="siteCaption" class="java.lang.String">
+            <fieldDescription><![CDATA[siteCaption]]></fieldDescription>
+        </field>
+        <field name="registrationDate" class="java.util.Date">
+            <fieldDescription><![CDATA[registrationDate]]></fieldDescription>
+        </field>
+        <field name="cityCaption" class="java.lang.String">
+            <fieldDescription><![CDATA[cityCaption]]></fieldDescription>
+        </field>
+        <field name="currencyCaption" class="java.lang.String">
+            <fieldDescription><![CDATA[currencyCaption]]></fieldDescription>
+        </field>
+        <field name="priceMax" class="java.lang.Integer">
+            <fieldDescription><![CDATA[priceMax]]></fieldDescription>
+        </field>
+        <field name="priceMin" class="java.lang.Integer">
+            <fieldDescription><![CDATA[priceMin]]></fieldDescription>
+        </field>
+        <field name="systemCurrencyCaption" class="java.lang.String">
+            <fieldDescription><![CDATA[systemCurrencyCaption]]></fieldDescription>
+        </field>
+        <field name="priceMaxForCourseSystemCurrency" class="java.lang.Integer">
+            <fieldDescription><![CDATA[priceMaxForCourseSystemCurrency]]></fieldDescription>
+        </field>
+        <field name="priceMinForCourseSystemCurrency" class="java.lang.Integer">
+            <fieldDescription><![CDATA[priceMinForCourseSystemCurrency]]></fieldDescription>
+        </field>
+        <field name="url" class="java.lang.String">
+            <fieldDescription><![CDATA[url]]></fieldDescription>
+        </field>
+        <sortField name="caption"/>
+        <sortField name="companyCaption"/>
+        <sortField name="siteCaption"/>
+    </subDataset>
+    <queryString>
+        <![CDATA[]]>
+    </queryString>
+    <field name="vacancyList" class="java.util.List">
+        <fieldDescription><![CDATA[vacancyList]]></fieldDescription>
+    </field>
+    <detail>
+        <band height="150" splitType="Stretch">
+            <property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+            <componentElement>
+                <reportElement x="0" y="0" width="1684" height="150" uuid="0332b92b-8ad5-4f92-9087-bcc9de5c7646">
+                    <property name="com.jaspersoft.studio.layout"
+                              value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+                    <property name="com.jaspersoft.studio.components.autoresize.next" value="true"/>
+                    <property name="com.jaspersoft.studio.components.autoresize.proportional" value="true"/>
+                </reportElement>
+                <jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components"
+                          xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd"
+                          whenNoDataType="AllSectionsNoDetail">
+                    <datasetRun subDataset="Dataset1" uuid="cf272138-fed8-4f90-9a79-697e2da9f50d">
+                        <dataSourceExpression>
+                            <![CDATA[new JRBeanCollectionDataSource($F{vacancyList})]]></dataSourceExpression>
+                    </datasetRun>
+                    <jr:column width="310" uuid="8099b2b3-7582-4f81-97c1-d21dd9a6ea8e">
+                        <jr:columnHeader style="Table_CH" height="50">
+                            <staticText>
+                                <reportElement x="0" y="0" width="310" height="50"
+                                               uuid="81b2601c-4c78-4c60-92ab-87833fef95cc"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font size="14"/>
+                                </textElement>
+                                <text><![CDATA[Caption]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:detailCell style="Table_TD" height="30">
+                            <textField isStretchWithOverflow="true">
+                                <reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="310" height="30"
+                                               uuid="96e61bf2-7084-4f33-bcbb-bc6eb52bbe5b"/>
+                                <textElement verticalAlignment="Middle">
+                                    <font size="10"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{caption}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="170" uuid="0a319b61-fd35-4b07-ae56-f76848483ad0">
+                        <jr:columnHeader style="Table_CH" height="50">
+                            <staticText>
+                                <reportElement x="0" y="0" width="170" height="50"
+                                               uuid="8e18e180-7420-45fd-a5dc-9962a27da90a"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font size="14"/>
+                                </textElement>
+                                <text><![CDATA[Company]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:detailCell style="Table_TD" height="30">
+                            <textField isStretchWithOverflow="true">
+                                <reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="170" height="30"
+                                               uuid="3ee9b705-3eff-4c65-9faa-62fffb24d22d"/>
+                                <textElement verticalAlignment="Middle">
+                                    <font size="10"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{companyCaption}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="90" uuid="8a58afbf-ee5f-4f35-8d3d-a01e2f36204e">
+                        <jr:columnHeader style="Table_CH" height="50">
+                            <staticText>
+                                <reportElement x="0" y="0" width="90" height="50"
+                                               uuid="019014e2-88f5-4386-8a2a-fbc5bac0bf3a"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font size="14"/>
+                                </textElement>
+                                <text><![CDATA[Site]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:detailCell style="Table_TD" height="30">
+                            <textField isStretchWithOverflow="true">
+                                <reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="90" height="30"
+                                               uuid="e9fb1362-69be-4a6e-9678-26a7fbe0714d"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font size="10"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{siteCaption}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="90" uuid="86ba2604-deef-4c94-b86b-146645f0c497">
+                        <jr:columnHeader style="Table_CH" height="50">
+                            <staticText>
+                                <reportElement x="0" y="0" width="90" height="50"
+                                               uuid="04570bf3-28ca-41b7-8bda-9bd229a77705"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font size="14"/>
+                                </textElement>
+                                <text><![CDATA[Date]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:detailCell style="Table_TD" height="30">
+                            <textField isStretchWithOverflow="true" pattern="M/d/yy">
+                                <reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="90" height="30"
+                                               uuid="b88ce119-9990-490b-a8d2-a52967a0e6f9"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font size="10"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{registrationDate}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="100" uuid="f41e21e0-192b-41f8-99a3-e95f59b93031">
+                        <jr:columnHeader style="Table_CH" height="50">
+                            <staticText>
+                                <reportElement x="0" y="0" width="100" height="50"
+                                               uuid="48d7e852-501e-4072-b261-7d300291fb1c"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font size="14"/>
+                                </textElement>
+                                <text><![CDATA[City]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:detailCell style="Table_TD" height="30">
+                            <textField isStretchWithOverflow="true">
+                                <reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="100" height="30"
+                                               uuid="0c2ace7a-3324-4126-b699-583378a020b2"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font size="10"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{cityCaption}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="80" uuid="4703fddb-7005-417e-aa84-f57dc4a63d6d">
+                        <jr:columnHeader style="Table_CH" height="50">
+                            <staticText>
+                                <reportElement x="0" y="0" width="80" height="50"
+                                               uuid="af99f386-8fca-437d-b7d4-cb57fd486946"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font size="14"/>
+                                </textElement>
+                                <text><![CDATA[Cur]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:detailCell style="Table_TD" height="30">
+                            <textField isStretchWithOverflow="true">
+                                <reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="80" height="30"
+                                               uuid="b62084d3-597c-43f5-ae4f-d30aadbf3cf1"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font size="10"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{currencyCaption}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="90" uuid="e089674a-db3b-470a-ba57-a34e3bd0a9d2">
+                        <jr:columnHeader style="Table_CH" height="50">
+                            <staticText>
+                                <reportElement x="0" y="0" width="90" height="50"
+                                               uuid="f9dac39a-ddde-4423-bf47-3c64ff11f037"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font size="14"/>
+                                </textElement>
+                                <text><![CDATA[Price (max)]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:detailCell style="Table_TD" height="30">
+                            <textField isStretchWithOverflow="true" pattern="#,###.###">
+                                <reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="90" height="30"
+                                               uuid="d1b9b4b8-083b-4d38-b45b-6b877059544d"/>
+                                <textElement textAlignment="Right" verticalAlignment="Middle">
+                                    <font size="10"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{priceMax}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="90" uuid="c0b29f46-ad4a-408d-9254-e4c55b76fa94">
+                        <jr:columnHeader style="Table_CH" height="50">
+                            <staticText>
+                                <reportElement x="0" y="0" width="90" height="50"
+                                               uuid="71dbd338-add9-45d6-a87e-43d8a730f39c"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font size="14"/>
+                                </textElement>
+                                <text><![CDATA[Price (min)]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:detailCell style="Table_TD" height="30">
+                            <textField isStretchWithOverflow="true" pattern="#,###.###">
+                                <reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="90" height="30"
+                                               uuid="c50aa2d3-df37-4d87-8304-729decf95e1c"/>
+                                <textElement textAlignment="Right" verticalAlignment="Middle">
+                                    <font size="10"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{priceMin}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="80" uuid="ebe3c905-861a-448e-b300-fb12f73f764b">
+                        <jr:columnHeader style="Table_CH" height="50">
+                            <staticText>
+                                <reportElement x="0" y="0" width="80" height="50"
+                                               uuid="d071f647-3d13-4549-a9f9-cfb3f496a7b3"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font size="14"/>
+                                </textElement>
+                                <text><![CDATA[sCur]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:detailCell style="Table_TD" height="30">
+                            <textField isStretchWithOverflow="true">
+                                <reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="80" height="30"
+                                               uuid="2303dadf-e044-41d8-8b23-c79c3ee5ba92"/>
+                                <textElement verticalAlignment="Middle">
+                                    <font size="10"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{systemCurrencyCaption}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="90" uuid="79bbe162-7150-4786-852d-6168d16d1ce1">
+                        <jr:columnHeader style="Table_CH" height="50">
+                            <staticText>
+                                <reportElement x="0" y="0" width="90" height="50"
+                                               uuid="be8b66ba-8090-4892-a213-9b3013d0b451"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font size="14"/>
+                                </textElement>
+                                <text><![CDATA[sCur (max)]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:detailCell style="Table_TD" height="30">
+                            <textField isStretchWithOverflow="true" pattern="#,###.###">
+                                <reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="90" height="30"
+                                               uuid="58b7493b-bbaf-4378-9b3e-242b61bffb5e"/>
+                                <textElement textAlignment="Right" verticalAlignment="Middle">
+                                    <font size="10"/>
+                                </textElement>
+                                <textFieldExpression>
+                                    <![CDATA[$F{priceMaxForCourseSystemCurrency}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="90" uuid="bf816c79-779f-4245-ba79-85d42894ff16">
+                        <jr:columnHeader style="Table_CH" height="50">
+                            <staticText>
+                                <reportElement x="0" y="0" width="90" height="50"
+                                               uuid="119fa506-ac71-4447-98fb-71cdee13d6e9"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font size="14"/>
+                                </textElement>
+                                <text><![CDATA[sCur (min)]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:detailCell style="Table_TD" height="30">
+                            <textField isStretchWithOverflow="true" pattern="#,###.###">
+                                <reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="90" height="30"
+                                               uuid="ec937488-e3e8-4a6f-8900-890d2e8480da"/>
+                                <textElement textAlignment="Right" verticalAlignment="Middle">
+                                    <font size="10"/>
+                                </textElement>
+                                <textFieldExpression>
+                                    <![CDATA[$F{priceMinForCourseSystemCurrency}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="404" uuid="b056b00b-67fb-4533-ae55-ed575eaf4068">
+                        <jr:columnHeader style="Table_CH" height="50">
+                            <staticText>
+                                <reportElement x="0" y="0" width="404" height="50"
+                                               uuid="80364be5-3ac2-4229-bc26-a96537d33a7f">
+                                    <property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+                                </reportElement>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font size="14"/>
+                                </textElement>
+                                <text><![CDATA[URL]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:detailCell style="Table_TD" height="30">
+                            <textField isStretchWithOverflow="true" hyperlinkType="Reference" hyperlinkTarget="Blank">
+                                <reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="404" height="30"
+                                               uuid="3ed80585-1eae-430d-8ae4-0462524f9053"/>
+                                <textElement verticalAlignment="Middle">
+                                    <font size="10"/>
+                                </textElement>
+                                <textFieldExpression><![CDATA[$F{url}]]></textFieldExpression>
+                                <hyperlinkReferenceExpression><![CDATA[$F{url}]]></hyperlinkReferenceExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                </jr:table>
+            </componentElement>
+        </band>
+    </detail>
+    <noData>
+        <band height="52">
+            <property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+            <textField>
+                <reportElement x="0" y="0" width="1684" height="52" uuid="2b8780df-7848-4f11-a287-20ab122376d8"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="18"/>
+                </textElement>
+                <textFieldExpression><![CDATA["No vacancies"]]></textFieldExpression>
+            </textField>
+        </band>
+    </noData>
+</jasperReport>

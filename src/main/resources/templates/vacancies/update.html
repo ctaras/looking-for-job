@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layouts/default/layout"
+      lang="en">
+
+<head>
+    <title th:text="#{search}">Search</title>
+</head>
+<body>
+
+<div layout:fragment="content" th:object="${vacancy}">
+
+    <div id="vacancyUpdate">
+
+        <form class="form-horizontal" th:action="@{/vacancies/{id}(id=*{id}, form)}" method="post">
+
+            <fieldset>
+                <legend class="page-header" th:text="#{__${titleOfPage}__}">Legend</legend>
+
+                <input type="hidden" id="vacancyversion" th:value="*{version}"/>
+
+                <div class="form-group" th:classappend="${#fields.hasErrors('caption')}? has-error">
+                    <label for="caption" class="col-sm-2 control-label text-uppercase" th:text="#{vacancy.caption}">Caption</label>
+
+                    <div class="col-sm-10">
+                        <input class="form-control" id="caption" th:placeholder="#{vacancy.caption}"
+                               th:field="*{caption}"/>
+
+                        <p th:if="${#fields.hasErrors('caption')}" th:errors="*{caption}">Incorrect caption</p>
+                    </div>
+                </div>
+
+                <div class="form-group" th:classappend="${#fields.hasErrors('url')}? has-error">
+                    <label for="url" class="col-sm-2 control-label text-uppercase" th:text="#{vacancy.url}">url</label>
+
+                    <div class="col-sm-10">
+                        <input class="form-control" id="url" th:placeholder="#{vacancy.url}"
+                               th:field="*{url}"/>
+
+                        <p th:if="${#fields.hasErrors('url')}" th:errors="*{url}">Incorrect url</p>
+                    </div>
+                </div>
+
+                <div class="form-group" th:classappend="${#fields.hasErrors('registrationDate')}? has-error">
+                    <label for="registrationDate" class="col-sm-2 control-label text-uppercase"
+                           th:text="#{vacancy.date}">registrationDate</label>
+
+                    <div class="col-sm-10">
+                        <input class="form-control datepicker" readonly="true" id="registrationDate"
+                               th:placeholder="#{vacancy.date}"
+                               th:field="*{registrationDate}"/>
+
+                        <p th:if="${#fields.hasErrors('registrationDate')}" th:errors="*{registrationDate}">Incorrect
+                            registrationDate</p>
+                    </div>
+                </div>
+
+                <div class="form-group" th:classappend="${#fields.hasErrors('priceMax')}? has-error">
+                    <label for="pricemax" class="col-sm-2 control-label text-uppercase"
+                           th:text="#{vacancy.priceMax}">price</label>
+
+                    <div class="col-sm-10">
+                        <input class="form-control" id="pricemax" th:placeholder="#{vacancy.price.max}"
+                               th:field="*{priceMax}"/>
+
+                        <p th:if="${#fields.hasErrors('priceMax')}" th:errors="*{priceMax}">Incorrect price</p>
+                    </div>
+                </div>
+
+                <div class="form-group" th:classappend="${#fields.hasErrors('priceMin')}? has-error">
+                    <label for="pricemin" class="col-sm-2 control-label text-uppercase"
+                           th:text="#{vacancy.priceMin}">price</label>
+
+                    <div class="col-sm-10">
+                        <input class="form-control" id="pricemin" th:placeholder="#{vacancy.price.min}"
+                               th:field="*{priceMin}"/>
+
+                        <p th:if="${#fields.hasErrors('priceMin')}" th:errors="*{priceMin}">Incorrect price</p>
+                    </div>
+                </div>
+
+                <div class="form-group" th:classappend="${#fields.hasErrors('currency')}? has-error">
+                    <label for="currency" class="col-sm-2 control-label text-uppercase"
+                           th:text="#{vacancy.currency}">price</label>
+
+                    <div class="col-sm-10">
+                        <select th:field="*{currency}" id="currency" class="form-control">
+                            <option th:each="currency : ${allcurrencies}"
+                                    th:value="${currency.id}"
+                                    th:text="${currency.caption}">Value
+                            </option>
+                        </select>
+
+                        <p th:if="${#fields.hasErrors('currency')}" th:errors="*{currency}">Incorrect price</p>
+                    </div>
+                </div>
+
+                <div class="form-group" th:classappend="${#fields.hasErrors('site')}? has-error">
+                    <label for="site" class="col-sm-2 control-label text-uppercase"
+                           th:text="#{vacancy.site}">site</label>
+
+                    <div class="col-sm-10">
+                        <select th:field="*{site}" id="site" class="form-control">
+                            <option th:each="site : ${sites}"
+                                    th:value="${site.id}"
+                                    th:text="${site.caption}">Value
+                            </option>
+                        </select>
+
+                        <p th:if="${#fields.hasErrors('site')}" th:errors="*{site}">Incorrect site</p>
+                    </div>
+                </div>
+
+                <div class="form-group" th:classappend="${#fields.hasErrors('city')}? has-error">
+                    <label for="city" class="col-sm-2 control-label text-uppercase"
+                           th:text="#{vacancy.city}">city</label>
+
+                    <div class="col-sm-10">
+                        <select th:field="*{city}" id="city" class="form-control">
+                            <option th:each="city : ${cities}"
+                                    th:value="${city.id}"
+                                    th:text="${city.caption}">Value
+                            </option>
+                        </select>
+
+                        <p th:if="${#fields.hasErrors('city')}" th:errors="*{city}">Incorrect city</p>
+                    </div>
+                </div>
+
+                <div class="form-group" th:classappend="${#fields.hasErrors('company')}? has-error">
+                    <label for="company" class="col-sm-2 control-label text-uppercase" th:text="#{vacancy.company}">company</label>
+
+                    <div class="col-sm-10">
+                        <select th:field="*{company}" id="company" class="form-control">
+                            <option th:each="company : ${companies}"
+                                    th:value="${company.id}"
+                                    th:text="${company.caption}">Value
+                            </option>
+                        </select>
+
+                        <p th:if="${#fields.hasErrors('company')}" th:errors="*{company}">Incorrect company</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default" th:value="#{action.save}">Save</button>
+                        <a th:href="@{/vacancies/}" class="btn btn-default" th:value="#{action.back}">Back</a>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

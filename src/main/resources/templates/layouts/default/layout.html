@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="en">
+<head>
+
+    <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE" th:text="#{application.name}">Application
+        name</title>
+
+    <div layout:replace="layouts/default/fragments/headerinc :: headerinc"></div>
+
+</head>
+<body>
+<header layout:replace="layouts/default/fragments/header :: header" class="header">Header</header>
+<div class="container">
+    <div layout:fragment="content">Container</div>
+</div>
+<footer layout:replace="layouts/default/fragments/footer :: footer" class="footer">Footer</footer>
+</body>
+</html>

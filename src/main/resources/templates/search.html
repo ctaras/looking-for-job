@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layouts/default/layout-full"
+      lang="en">
+
+<head>
+    <title th:text="#{search}">Search</title>
+
+    <link rel="stylesheet" type="text/css" media="all"
+          th:href="@{/webjars/datatables/1.10.10/css/jquery.dataTables.min.css}"/>
+
+    <script th:src="@{/webjars/datatables/1.10.10/js/jquery.dataTables.min.js}"></script>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+    <div class="container">
+        <form role="form" th:object="${options}" th:action="@{/search/result}" method="get">
+            <fieldset>
+                <legend class="page-header" th:text="#{search}">Legend</legend>
+
+                <div class="checkbox" th:classappend="${#fields.hasErrors('sites')}? has-error">
+                    <ul class="list-inline">
+                        <li th:each="site : ${allsites}">
+                            <input type="checkbox" th:value="${site.id}" th:field="*{sites}"/>
+                            <label th:text="${site.caption}" th:for="${#ids.prev('sites')}">Checkbox</label>
+                        </li>
+                    </ul>
+                    <p th:if="${#fields.hasErrors('sites')}" th:errors="*{sites}">Incorrect sites</p>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-9" th:classappend="${#fields.hasErrors('query')} ? has-error">
+                        <input type="text" class="form-control" th:placeholder="#{search.form.title}"
+                               th:field="*{query}"/>
+
+                        <p th:if="${#fields.hasErrors('query')}" th:errors="*{query}">Incorrect query</p>
+                    </div>
+                    <div class="col-md-2">
+                        <select id="city" class="form-control" th:field="*{city}">
+                            <option th:each="city : ${allcities}"
+                                    th:value="${city.id}"
+                                    th:text="${city.caption}">Value
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-1"><input type="submit" class="btn btn-primary form-control"
+                                                 th:value="#{search.form.button.find}"/></div>
+
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+
+    <!--/*/ <th:block th:if="${allvacancies!=null}"> /*/-->
+    <div th:replace="vacancies/list :: list"></div>
+    <!--/*/ </th:block> /*/-->
+
+</div>
+
+
+</body>
+</html>

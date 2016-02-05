@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layouts/default/layout"
+      lang="en">
+
+<head>
+    <title th:text="#{search}">Search</title>
+</head>
+<body>
+
+<div layout:fragment="content" th:object="${company}">
+
+    <div id="companyUpdate">
+
+        <form class="form-horizontal" th:action="@{/companies/{id}(id=*{id}, form)}" method="post">
+
+            <fieldset>
+                <legend class="page-header" th:text="#{__${titleOfPage}__}">Legend</legend>
+
+                <input type="hidden" id="companyversion" name="version" th:value="*{version}"/>
+
+                <div class="form-group" th:classappend="${#fields.hasErrors('caption')}? has-error">
+                    <label for="caption" class="col-sm-2 control-label text-uppercase" th:text="#{company.caption}">Caption</label>
+
+                    <div class="col-sm-10">
+                        <input class="form-control" id="caption" th:placeholder="#{company.caption}"
+                               th:field="*{caption}"/>
+
+                        <p th:if="${#fields.hasErrors('caption')}" th:errors="*{caption}">Incorrect caption</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default" th:value="#{action.save}">Save</button>
+                        <a th:href="@{/companies/}" class="btn btn-default" th:value="#{action.back}">Back</a>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
+<!-- 2016-02-02T15:38:58 -->
+<jasperReport xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="Vacancy_A4_Landscape_Table_Based" pageWidth="842" pageHeight="595" orientation="Landscape"
+              whenNoDataType="NoDataSection" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20"
+              bottomMargin="20" resourceBundle="messages/messages" isIgnorePagination="true"
+              uuid="8a465670-cc4a-4270-965f-8efb86e33b71">
+    <property name="template.engine" value="tabular_template"/>
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+    <import value="net.sf.jasperreports.engine.*"/>
+    <import value="java.util.*"/>
+    <import value="ua.chuchvaga.taras.lookingjob.model.VacancyModel"/>
+    <import value="ua.chuchvaga.taras.lookingjob.model.report.VacancyReportBean"/>
+    <import value="net.sf.jasperreports.engine.data.*"/>
+    <style name="Table">
+        <box>
+            <pen lineWidth="1.0" lineColor="#000000"/>
+            <topPen lineWidth="1.0" lineColor="#000000"/>
+            <leftPen lineWidth="1.0" lineColor="#000000"/>
+            <bottomPen lineWidth="1.0" lineColor="#000000"/>
+            <rightPen lineWidth="1.0" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="Table_TH" mode="Opaque" backcolor="#DA9C00">
+        <box>
+            <topPen lineWidth="0.5" lineColor="#000000"/>
+            <bottomPen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="Table 1_TH" mode="Opaque" backcolor="#D2B48C">
+        <box>
+            <topPen lineWidth="0.5" lineColor="#000000"/>
+            <bottomPen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="Table 1_CH" mode="Opaque" backcolor="#FFE4BF">
+        <box>
+            <topPen lineWidth="0.5" lineColor="#000000"/>
+            <bottomPen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="Table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+        <box>
+            <topPen lineWidth="0.5" lineColor="#000000"/>
+            <bottomPen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <subDataset name="VacancyDataset" resourceBundle="messages/messages" uuid="d720522d-87db-4931-86b9-b8fcfd8cbe12">
+        <property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+        <queryString>
+            <![CDATA[]]>
+        </queryString>
+        <field name="companyCaption" class="java.lang.String">
+            <fieldDescription><![CDATA[companyCaption]]></fieldDescription>
+        </field>
+        <field name="caption" class="java.lang.String">
+            <fieldDescription><![CDATA[caption]]></fieldDescription>
+        </field>
+        <field name="siteCaption" class="java.lang.String">
+            <fieldDescription><![CDATA[siteCaption]]></fieldDescription>
+        </field>
+        <field name="url" class="java.lang.String">
+            <fieldDescription><![CDATA[url]]></fieldDescription>
+        </field>
+        <field name="registrationDate" class="java.util.Date">
+            <fieldDescription><![CDATA[registrationDate]]></fieldDescription>
+        </field>
+        <field name="cityCaption" class="java.lang.String">
+            <fieldDescription><![CDATA[cityCaption]]></fieldDescription>
+        </field>
+        <field name="priceMax" class="java.lang.Integer">
+            <fieldDescription><![CDATA[priceMax]]></fieldDescription>
+        </field>
+        <field name="priceMin" class="java.lang.Integer">
+            <fieldDescription><![CDATA[priceMin]]></fieldDescription>
+        </field>
+        <field name="currencyCaption" class="java.lang.String">
+            <fieldDescription><![CDATA[currencyCaption]]></fieldDescription>
+        </field>
+        <sortField name="companyCaption"/>
+        <sortField name="caption"/>
+        <sortField name="siteCaption"/>
+        <sortField name="registrationDate" order="Descending"/>
+        <group name="CompanyGroup">
+            <groupExpression><![CDATA[$F{companyCaption}]]></groupExpression>
+        </group>
+        <group name="VacancyGroup">
+            <groupExpression><![CDATA[$F{caption}]]></groupExpression>
+        </group>
+    </subDataset>
+    <queryString>
+        <![CDATA[]]>
+    </queryString>
+    <field name="vacancyList" class="java.util.List">
+        <fieldDescription><![CDATA[vacancyList]]></fieldDescription>
+    </field>
+    <title>
+        <band height="58" splitType="Stretch">
+            <textField>
+                <reportElement x="0" y="0" width="802" height="58" uuid="9d97cdc6-7d5f-49f2-b50c-c33201290c86"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="18"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$R{report.list.vacancy.title}]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+    <detail>
+        <band height="160">
+            <componentElement>
+                <reportElement x="0" y="0" width="802" height="150" uuid="44083d9f-287c-43d3-b6dd-74ce0fa96d71">
+                    <property name="com.jaspersoft.studio.layout"
+                              value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+                    <property name="com.jaspersoft.studio.components.autoresize.next" value="true"/>
+                    <property name="com.jaspersoft.studio.components.autoresize.proportional" value="true"/>
+                </reportElement>
+                <jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components"
+                          xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd"
+                          whenNoDataType="AllSectionsNoDetail">
+                    <datasetRun subDataset="VacancyDataset" uuid="46fab19f-e102-49c7-a358-d7512c0986f7">
+                        <dataSourceExpression>
+                            <![CDATA[new JRBeanCollectionDataSource($F{vacancyList})]]></dataSourceExpression>
+                    </datasetRun>
+                    <jr:column width="90" uuid="c770cfe3-6fa9-4ad2-b930-0b2b6abba6b8">
+                        <jr:groupHeader groupName="CompanyGroup">
+                            <jr:cell style="Table 1_CH" height="30">
+                                <textField>
+                                    <reportElement x="0" y="0" width="90" height="30"
+                                                   uuid="dd73a06e-f3de-4595-a9e5-6ff27f415cff"/>
+                                    <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                                    <textFieldExpression><![CDATA[$F{companyCaption}]]></textFieldExpression>
+                                </textField>
+                            </jr:cell>
+                        </jr:groupHeader>
+                        <jr:groupHeader groupName="VacancyGroup">
+                            <jr:cell style="Table 1_CH" height="30">
+                                <textField>
+                                    <reportElement x="0" y="0" width="90" height="30"
+                                                   uuid="b618fc70-f8f6-4d19-bf1b-e22ed6ade9a8"/>
+                                    <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                                    <textFieldExpression><![CDATA[$F{companyCaption}]]></textFieldExpression>
+                                </textField>
+                            </jr:cell>
+                        </jr:groupHeader>
+                        <jr:columnHeader style="Table 1_CH" height="30">
+                            <staticText>
+                                <reportElement x="0" y="0" width="90" height="30"
+                                               uuid="9b393995-e1d5-494c-aadb-ba8cf8dfc412"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font size="10"/>
+                                </textElement>
+                                <text><![CDATA[Company]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:columnFooter style="Table 1_CH" height="30"/>
+                        <jr:detailCell style="Table 1_TD" height="30">
+                            <textField>
+                                <reportElement x="0" y="0" width="90" height="30"
+                                               uuid="fffd6b26-a4a7-40fc-9353-aa4e4a593ca9"/>
+                                <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                                <textFieldExpression><![CDATA[$F{companyCaption}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="89" uuid="46a32976-e634-4533-907c-a31f2246f6fd">
+                        <jr:groupHeader groupName="CompanyGroup">
+                            <jr:cell style="Table 1_CH" height="30"/>
+                        </jr:groupHeader>
+                        <jr:groupHeader groupName="VacancyGroup">
+                            <jr:cell style="Table 1_CH" height="30">
+                                <textField>
+                                    <reportElement x="0" y="0" width="89" height="30"
+                                                   uuid="3eb5bc20-c8b3-40f9-96c3-d285e02b324e"/>
+                                    <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                                    <textFieldExpression><![CDATA[$F{caption}]]></textFieldExpression>
+                                </textField>
+                            </jr:cell>
+                        </jr:groupHeader>
+                        <jr:columnHeader style="Table 1_CH" height="30">
+                            <staticText>
+                                <reportElement x="0" y="0" width="89" height="30"
+                                               uuid="e3184b22-1dbe-486c-96a8-dcae71e26d23"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font size="10"/>
+                                </textElement>
+                                <text><![CDATA[Caption]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:columnFooter style="Table 1_CH" height="30"/>
+                        <jr:detailCell style="Table 1_TD" height="30">
+                            <textField>
+                                <reportElement x="0" y="0" width="89" height="30"
+                                               uuid="b55c0b1d-29f9-4910-9c83-9efd894835cb"/>
+                                <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                                <textFieldExpression><![CDATA[$F{caption}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="89" uuid="962f0876-6d96-4aab-97aa-4bc15c51e578">
+                        <jr:groupHeader groupName="CompanyGroup">
+                            <jr:cell style="Table 1_CH" height="30"/>
+                        </jr:groupHeader>
+                        <jr:groupHeader groupName="VacancyGroup">
+                            <jr:cell style="Table 1_CH" height="30"/>
+                        </jr:groupHeader>
+                        <jr:columnHeader style="Table 1_CH" height="30">
+                            <staticText>
+                                <reportElement x="0" y="0" width="89" height="30"
+                                               uuid="68b88a5b-029e-4373-bbc1-c5fe0e823632"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font size="10"/>
+                                </textElement>
+                                <text><![CDATA[Site]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:columnFooter style="Table 1_CH" height="30"/>
+                        <jr:detailCell style="Table 1_TD" height="30">
+                            <textField>
+                                <reportElement x="0" y="0" width="89" height="30"
+                                               uuid="c6d070d1-d122-4bd7-9b83-d31aa19643f7"/>
+                                <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                                <textFieldExpression><![CDATA[$F{siteCaption}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="89" uuid="130ba3a4-bba7-49d4-b3ec-72f2495e1bcb">
+                        <jr:groupHeader groupName="CompanyGroup">
+                            <jr:cell style="Table 1_CH" height="30"/>
+                        </jr:groupHeader>
+                        <jr:groupHeader groupName="VacancyGroup">
+                            <jr:cell style="Table 1_CH" height="30"/>
+                        </jr:groupHeader>
+                        <jr:columnHeader style="Table 1_CH" height="30">
+                            <staticText>
+                                <reportElement x="0" y="0" width="89" height="30"
+                                               uuid="5c9fa73b-69a4-4409-8403-b8e667cde3b9"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font size="10"/>
+                                </textElement>
+                                <text><![CDATA[URL]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:columnFooter style="Table 1_CH" height="30"/>
+                        <jr:detailCell style="Table 1_TD" height="30">
+                            <textField>
+                                <reportElement x="0" y="0" width="89" height="30"
+                                               uuid="8c8b5ae8-8ab8-4102-b8da-03e09d858369"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                                <textFieldExpression><![CDATA[$F{url}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="89" uuid="cbc5cdca-acbb-479b-93aa-d11449947a42">
+                        <jr:groupHeader groupName="CompanyGroup">
+                            <jr:cell style="Table 1_CH" height="30"/>
+                        </jr:groupHeader>
+                        <jr:groupHeader groupName="VacancyGroup">
+                            <jr:cell style="Table 1_CH" height="30"/>
+                        </jr:groupHeader>
+                        <jr:columnHeader style="Table 1_CH" height="30">
+                            <staticText>
+                                <reportElement x="0" y="0" width="89" height="30"
+                                               uuid="5b919623-b8fe-465e-8b87-b3f1d1255fa1"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font size="10"/>
+                                </textElement>
+                                <text><![CDATA[Date]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:columnFooter style="Table 1_CH" height="30"/>
+                        <jr:detailCell style="Table 1_TD" height="30">
+                            <textField>
+                                <reportElement x="0" y="0" width="89" height="30"
+                                               uuid="34ff668d-03e7-4af6-be35-69669a3c2802"/>
+                                <textElement textAlignment="Right" verticalAlignment="Middle"/>
+                                <textFieldExpression><![CDATA[$F{registrationDate}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="89" uuid="83b7579e-cb9a-474e-add6-fde537eb6b3c">
+                        <jr:groupHeader groupName="CompanyGroup">
+                            <jr:cell style="Table 1_CH" height="30"/>
+                        </jr:groupHeader>
+                        <jr:groupHeader groupName="VacancyGroup">
+                            <jr:cell style="Table 1_CH" height="30"/>
+                        </jr:groupHeader>
+                        <jr:columnHeader style="Table 1_CH" height="30">
+                            <staticText>
+                                <reportElement x="0" y="0" width="89" height="30"
+                                               uuid="125158b4-49dd-4856-8137-c3948af6c1c5"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font size="10"/>
+                                </textElement>
+                                <text><![CDATA[City]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:columnFooter style="Table 1_CH" height="30"/>
+                        <jr:detailCell style="Table 1_TD" height="30">
+                            <textField>
+                                <reportElement x="0" y="0" width="89" height="30"
+                                               uuid="429f7e63-70b2-40e4-a800-59c5d42397b0"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                                <textFieldExpression><![CDATA[$F{cityCaption}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="89" uuid="fc38d053-fa8f-4b46-82c9-6966da5dc4f8">
+                        <jr:groupHeader groupName="CompanyGroup">
+                            <jr:cell style="Table 1_CH" height="30"/>
+                        </jr:groupHeader>
+                        <jr:groupHeader groupName="VacancyGroup">
+                            <jr:cell style="Table 1_CH" height="30"/>
+                        </jr:groupHeader>
+                        <jr:columnHeader style="Table 1_CH" height="30">
+                            <staticText>
+                                <reportElement x="0" y="0" width="89" height="30"
+                                               uuid="fe58fcd4-9aed-4e5b-8c4d-42d09a8993fa"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font size="10"/>
+                                </textElement>
+                                <text><![CDATA[Price (max)]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:columnFooter style="Table 1_CH" height="30"/>
+                        <jr:detailCell style="Table 1_TD" height="30">
+                            <textField>
+                                <reportElement x="0" y="0" width="89" height="30"
+                                               uuid="37c3f9bc-f1fb-4098-9694-a7ac77b46f8c"/>
+                                <textElement textAlignment="Right" verticalAlignment="Middle"/>
+                                <textFieldExpression><![CDATA[$F{priceMax}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="89" uuid="37a22f58-947e-407a-a9a7-99e501c779f8">
+                        <jr:groupHeader groupName="CompanyGroup">
+                            <jr:cell style="Table 1_CH" height="30"/>
+                        </jr:groupHeader>
+                        <jr:groupHeader groupName="VacancyGroup">
+                            <jr:cell style="Table 1_CH" height="30"/>
+                        </jr:groupHeader>
+                        <jr:columnHeader style="Table 1_CH" height="30">
+                            <staticText>
+                                <reportElement x="0" y="0" width="89" height="30"
+                                               uuid="a076a689-9026-4f2d-98ef-3c908b3a7912"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font size="10"/>
+                                </textElement>
+                                <text><![CDATA[Price (min)]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:columnFooter style="Table 1_CH" height="30"/>
+                        <jr:detailCell style="Table 1_TD" height="30">
+                            <textField>
+                                <reportElement x="0" y="0" width="89" height="30"
+                                               uuid="ad668441-1a51-423b-9186-60ac8fc649fc"/>
+                                <textElement textAlignment="Right" verticalAlignment="Middle"/>
+                                <textFieldExpression><![CDATA[$F{priceMin}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                    <jr:column width="89" uuid="d87fec5a-b764-4679-924f-13b13f550c9d">
+                        <jr:groupHeader groupName="CompanyGroup">
+                            <jr:cell style="Table 1_CH" height="30"/>
+                        </jr:groupHeader>
+                        <jr:groupHeader groupName="VacancyGroup">
+                            <jr:cell style="Table 1_CH" height="30"/>
+                        </jr:groupHeader>
+                        <jr:columnHeader style="Table 1_CH" height="30">
+                            <staticText>
+                                <reportElement x="0" y="0" width="89" height="30"
+                                               uuid="51582126-2bed-4d90-a891-c638f0562e4a"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle">
+                                    <font size="10"/>
+                                </textElement>
+                                <text><![CDATA[Currency]]></text>
+                            </staticText>
+                        </jr:columnHeader>
+                        <jr:columnFooter style="Table 1_CH" height="30"/>
+                        <jr:detailCell style="Table 1_TD" height="30">
+                            <textField>
+                                <reportElement x="0" y="0" width="89" height="30"
+                                               uuid="600b696a-db69-4fcf-98bd-48e1ced4de12"/>
+                                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                                <textFieldExpression><![CDATA[$F{currencyCaption}]]></textFieldExpression>
+                            </textField>
+                        </jr:detailCell>
+                    </jr:column>
+                </jr:table>
+            </componentElement>
+        </band>
+    </detail>
+    <noData>
+        <band height="50">
+            <staticText>
+                <reportElement x="0" y="0" width="802" height="50" uuid="9086783d-8871-4557-8903-79e8d553d9ab"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="14"/>
+                </textElement>
+                <text><![CDATA[No vacancies]]></text>
+            </staticText>
+        </band>
+    </noData>
+</jasperReport>

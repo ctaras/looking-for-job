@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layouts/default/layout"
+      lang="en">
+
+<head>
+    <title th:text="#{search}">Search</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <h3 th:text="#{sites.reference}">Header</h3>
+    <table class="table table-striped datatable">
+        <thead>
+        <tr class="text-uppercase">
+            <th th:text="#{table.head.row_number}">#</th>
+            <th th:text="#{sites.id}">thead</th>
+            <th th:text="#{sites.caption}">thead</th>
+            <th th:text="#{sites.alias}">thead</th>
+            <th th:text="#{sites.url}">thead</th>
+            <th th:text="#{sites.version}">thead</th>
+            <th th:text="#{sites.action}">thead</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="site : ${sites}" th:object="${site}">
+            <th scope="row" th:text="${#ids.seq('')}">row</th>
+            <td th:text="*{id}">td</td>
+            <td th:text="*{caption}">td</td>
+            <td th:text="*{alias}">td</td>
+            <td th:text="*{url}">td</td>
+            <td th:text="*{version}">td</td>
+            <td>
+                <div class="btn-group">
+                    <a class="btn btn-success" th:text="#{action.show}" th:href="@{/sites/{id}(id=*{id})}">Show</a>
+                    <a class="btn btn-primary" th:text="#{action.edit}" th:href="@{/sites/{id}(id=*{id},form)}">Edit</a>
+                    <a class="btn btn-danger btn-remove-data" th:text="#{action.remove}"
+                       th:href="@{/sites/{id}(id=*{id},form)}"
+                       th:attr="data-id=*{id}, data-url-redirect=@{/sites/}, data-message=#{question.delete(#{site}, *{id})}">Remove</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

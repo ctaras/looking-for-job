@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="en">
+<head>
+    <title>Footer page</title>
+</head>
+<body>
+
+<footer layout:fragment="footer" class="footer">
+    <div class="container">
+        <p th:text="#{footer.content}" class="text-muted">
+            Footer text
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>

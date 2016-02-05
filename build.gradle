@@ -1,0 +1,108 @@
+buildscript {
+    ext {
+        springBootVersion = '1.3.1.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+def defaultEncoding = 'UTF-8'
+compileJava {
+    options.encoding = defaultEncoding  // affects *.java under src/main/java
+    // alternative: "file.encoding" property
+    compileTestJava {
+        options.encoding = defaultEncoding  // affects *.java under src/test/java
+        // alternative: "file.encoding" property
+    }
+    compileGroovy {
+        groovyOptions.encoding = defaultEncoding  // affects *.groovy under src/main/groovy
+        options.encoding = defaultEncoding        // affects *.java under src/main/groovy
+    }
+    compileTestGroovy {
+        groovyOptions.encoding = defaultEncoding  // affects *.groovy under src/test/groovy
+        options.encoding = defaultEncoding        // affects *.java under src/test/groovy
+    }
+}
+
+group = 'ua.chuchvaga.taras'
+description = 'Analysis of vacancies in the labor market'
+version = '0.0.1-SNAPSHOT'
+
+processResources {
+    filesMatching('**/application.yml') {
+        expand(project.properties)
+    }
+}
+
+jar {
+    //baseName = 'looking-for-job'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-aop')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-jta-atomikos')
+    compile('org.springframework.boot:spring-boot-devtools')
+    compile('org.projectlombok:lombok:1.16.6')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('com.h2database:h2')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile('com.google.guava:guava:19.0')
+    compile('org.apache.commons:commons-lang3:3.4')
+    compile('net.sourceforge.nekohtml:nekohtml:1.9.22')
+    compile('org.codehaus.groovy:groovy-all')
+    compile('org.springframework:spring-support:2.0.8')
+    compile('net.sf.jasperreports:jasperreports:6.2.0')
+    compile('net.sf.jasperreports:jasperreports-fonts:6.0.0')
+    compile('com.lowagie:itext:2.1.7')
+    compile('org.apache.poi:poi:3.13')
+    compile('org.olap4j:olap4j:0.9.7.309-JS-3')
+    compile('org.springframework.boot:spring-boot-actuator-docs')
+    //compile('org.springframework.boot:spring-boot-starter-hateoas')
+    compile('org.springframework.boot:spring-boot-starter-data-rest')
+    compile('org.springframework.data:spring-data-rest-hal-browser')
+    //compile('org.springframework.boot:spring-boot-starter-groovy-templates')
+    //compile('org.springframework.boot:spring-boot-starter-jersey')
+    //compile('org.springframework.boot:spring-boot-starter-remote-shell')
+    compile('org.springframework.session:spring-session')
+    compile("org.webjars:jquery:2.2.0")
+    compile("org.webjars:jquery-ui:1.11.4")
+    compile("org.webjars:bootstrap:3.3.6")
+    compile("org.webjars:datatables:1.10.10")
+    compile("org.webjars:bootbox:4.4.0")
+    compile("org.webjars.npm:ag-grid:3.1.2")
+}
+
+eclipse {
+    classpath {
+        containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
+        containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.9'
+}
