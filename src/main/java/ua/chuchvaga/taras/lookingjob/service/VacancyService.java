@@ -10,13 +10,15 @@ import java.util.List;
 public interface VacancyService {
     List<Vacancy> findAll();
 
-    Vacancy findById(Long id);
+    Vacancy findById(String id);
 
     Vacancy save(Vacancy vacancy);
 
-    void delete(Long id);
+    void delete(String id);
 
-    Iterable<Vacancy> save(Iterable<Vacancy> entities);
+    List<Vacancy> save(List<Vacancy> entities);
 
     void truncateTable();
+
+    List<Vacancy> findAllWithViewedStatus();
 }

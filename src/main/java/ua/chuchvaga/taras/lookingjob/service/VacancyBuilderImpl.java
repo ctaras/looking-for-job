@@ -8,9 +8,12 @@ import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
+import org.springframework.web.util.UriUtils;
+import org.springframework.web.util.WebUtils;
 import ua.chuchvaga.taras.lookingjob.domain.Company;
 import ua.chuchvaga.taras.lookingjob.domain.Vacancy;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -80,13 +83,27 @@ public class VacancyBuilderImpl implements VacancyBuilder {
     }
 
     List<Vacancy> validateVacancies(List<VacancyTemplate> vacancyTemplates) {
+        Set<String> vacancyURLs = new HashSet<>();
         List<Vacancy> vacancies = new ArrayList<>();
         for (VacancyTemplate vt : vacancyTemplates) {
             Company company = companyService.findByCaption(vt.getCompanyCaption());
             if (company == null)
                 log.error("Job missing: '{}'. Reason: company '{}' not found", vt.getVacancyCaption(), vt.getCompanyCaption());
-            else {
+            else if (!vacancyURLs.contains(vt.getVacancyUrl())) {
+
+                String pathSegment;
+
+                try {
+                    pathSegment = UriUtils.encodePathSegment(vt.getVacancyUrl(), WebUtils.DEFAULT_CHARACTER_ENCODING);
+                } catch (UnsupportedEncodingException uee) {
+                    log.error(uee.toString());
+                    continue;
+                }
+
+                vacancyURLs.add(pathSegment);
+
                 Vacancy vacancy = new Vacancy();
+                vacancy.setId(pathSegment);
                 vacancy.setCaption(vt.getVacancyCaption());
                 vacancy.setUrl(vt.getVacancyUrl());
                 vacancy.setPriceMax(vt.getPriceMax());
@@ -123,7 +140,8 @@ public class VacancyBuilderImpl implements VacancyBuilder {
     public void buildFromTemplates(List<VacancyTemplate> vacancyTemplates) {
         validateCompanies(vacancyTemplates);
         List<Vacancy> vacancies = validateVacancies(vacancyTemplates);
-        saveAllVacancies(vacancies);
+        if (vacancies.size() > 0)
+            saveAllVacancies(vacancies);
     }
 
     public void eraseAllVacancies() {

@@ -65,6 +65,11 @@ code {
 }
 
 table.vacancy-list th.column-vacancy-url {
-    width: 140px
+    width: 90px
+}
+
+.viewed {
+    /*background-color: dimgray;*/
+    color: #BBBBBB;
 }
 

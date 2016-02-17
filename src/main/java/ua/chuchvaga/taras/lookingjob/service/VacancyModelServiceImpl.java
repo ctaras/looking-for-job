@@ -38,7 +38,8 @@ public class VacancyModelServiceImpl implements VacancyModelService {
                 , v.getCurrency().getCaption()
                 , new Double(v.getPriceMin() * rate).intValue()
                 , new Double(v.getPriceMax() * rate).intValue()
-                , systemCurrency.getCaption());
+                , systemCurrency.getCaption()
+                , v.getViewed() != null && v.getViewed().isViewed());
     }
 
     @Override

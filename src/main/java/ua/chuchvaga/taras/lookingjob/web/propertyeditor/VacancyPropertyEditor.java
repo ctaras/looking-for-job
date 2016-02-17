@@ -19,12 +19,12 @@ public class VacancyPropertyEditor extends PropertyEditorSupport {
         if (getValue() == null)
             return null;
 
-        return String.valueOf(((Vacancy) super.getValue()).getId());
+        return ((Vacancy) super.getValue()).getId();
     }
 
     @Override
     public void setAsText(String text) throws IllegalArgumentException {
-        Long id = new Long(text);
+        String id = text;
         super.setValue(vacancyService.findById(id));
     }
 }

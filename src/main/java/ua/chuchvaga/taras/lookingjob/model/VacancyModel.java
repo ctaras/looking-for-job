@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Value
 public class VacancyModel {
-    private final Long id;
+    private final String id;
     private final int version;
     private final String caption;
     private final String siteCaption;
@@ -20,4 +20,5 @@ public class VacancyModel {
     private final int priceMinForCourseSystemCurrency;
     private final int priceMaxForCourseSystemCurrency;
     private final String systemCurrencyCaption;
+    private final boolean viewed;
 }

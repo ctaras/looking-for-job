@@ -21,6 +21,8 @@ var columnDefs = [
         suppressSizeToFit: true
     },
 
+    {headerName: "Viewed", field: "viewed", width: 80, cellStyle: {'text-align': 'center'}},
+
     {headerName: "Site", field: "siteCaption", width: 90, sort: 'asc', cellStyle: {'text-align': 'center'}},
 
     {headerName: "Date", field: "registrationDate", width: 90, sort: 'desc', cellStyle: {'text-align': 'center'}},

@@ -71,7 +71,7 @@ public class SearchController {
         searchEngine.search(searchOptions);
 
         List<Vacancy> vacancies = vacancyService.findAll();
-        uiModel.addAttribute("allvacancies", vacancyModelService.getListModel(vacancies));
+        uiModel.addAttribute("allvacancies", vacancyModelService.getListModel(vacancyService.findAllWithViewedStatus()));
         uiModel.addAttribute("allsites", siteService.findAll());
         uiModel.addAttribute("allcities", cityService.findAll());
         uiModel.addAttribute("options", searchOptions);

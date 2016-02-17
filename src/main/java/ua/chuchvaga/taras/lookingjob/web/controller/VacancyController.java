@@ -2,6 +2,7 @@ package ua.chuchvaga.taras.lookingjob.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -51,6 +52,9 @@ public class VacancyController {
     @Autowired
     private VacancyModelService vacancyModelService;
 
+    @Autowired
+    private ViewedService viewedService;
+
     @InitBinder
     public void initBinder(WebDataBinder binder) {
 //        binder.registerCustomEditor(Date.class,
@@ -69,7 +73,7 @@ public class VacancyController {
     public String list(Model uiModel) {
         log.info("Listing vacancies");
 
-        List<Vacancy> vacancies = vacancyService.findAll();
+        List<Vacancy> vacancies = vacancyService.findAllWithViewedStatus();
         uiModel.addAttribute("allvacancies", vacancyModelService.getListModel(vacancies));
 
         log.info("No. of vacancies: " + vacancies.size());
@@ -78,7 +82,7 @@ public class VacancyController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String show(@PathVariable("id") Long id, Model uiModel) {
+    public String show(@PathVariable("id") String id, Model uiModel) {
         Vacancy vacancy = vacancyService.findById(id);
         uiModel.addAttribute("vacancy", vacancy);
 
@@ -110,7 +114,7 @@ public class VacancyController {
     }
 
     @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
-    public String updateForm(@PathVariable("id") Long id, Model uiModel) {
+    public String updateForm(@PathVariable("id") String id, Model uiModel) {
         uiModel.addAttribute("vacancy", vacancyService.findById(id));
         uiModel.addAttribute("sites", siteService.findAll());
         uiModel.addAttribute("cities", cityService.findAll());
@@ -157,7 +161,7 @@ public class VacancyController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String delete(@PathVariable("id") Long id) {
+    public String delete(@PathVariable("id") String id) {
         vacancyService.delete(id);
         return "redirect:/vacancies/";
     }
@@ -165,7 +169,7 @@ public class VacancyController {
     @RequestMapping(value = "/listdata", method = RequestMethod.GET)
     @ResponseBody
     public VacancyDataList listData(@RequestParam(value = "sort", required = false, defaultValue = "company") String sortColumn) {
-        List<VacancyModel> vacancyModels = vacancyModelService.getListModel(vacancyService.findAll());
+        List<VacancyModel> vacancyModels = vacancyModelService.getListModel(vacancyService.findAllWithViewedStatus());
         Collections.sort(vacancyModels, (o1, o2) -> {
 
             int c = 0;
@@ -182,5 +186,14 @@ public class VacancyController {
             return c;
         });
         return new VacancyDataList(vacancyModels);
+    }
+
+    @RequestMapping(value = "/{id}/viewed", method = RequestMethod.PUT)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateViewed(@PathVariable("id") String id) {
+        log.warn("updateViewed");
+        Vacancy vacancy = vacancyService.findById(id);
+        viewedService.create(vacancy, true);
     }
 }

@@ -34,11 +34,13 @@
             <th th:text="#{vacancy.price.max.systemcurrency}">thead</th>
             <th th:text="#{vacancy.price.min.systemcurrency}">thead</th>
             <th th:text="#{vacancy.currency.systemcurrency}">thead</th>
+            <th th:text="#{viewedstatus}">thead</th>
             <th th:text="#{vacancy.url}" class="column-vacancy-url">thead</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="vacancy : ${allvacancies}" th:object="${vacancy}">
+        <tr th:each="vacancy : ${allvacancies}" th:object="${vacancy}"
+            th:classappend="${vacancy.viewed ? 'viewed' : 'notviewed'}">
             <th scope="row" th:text="${#ids.seq('')}">row</th>
             <td th:text="*{caption}">td</td>
             <td th:text="*{siteCaption}">td</td>
@@ -51,11 +53,14 @@
             <td th:text="*{priceMaxForCourseSystemCurrency}">td</td>
             <td th:text="*{priceMinForCourseSystemCurrency}">td</td>
             <td th:text="*{systemCurrencyCaption}">td</td>
+            <td th:text="#{__${vacancy.viewed ? 'viewedstatus.old' : 'viewedstatus.new'}__}">td</td>
             <td>
                 <div class="btn-group">
-                    <a th:title="@{/vacancies/{id}(id=*{id})}" th:href="@{/vacancies/{id}(id=*{id})}"
+                    <a th:title="#{vacancy.link.viewed.full}" th:href="@{/vacancies/{id}/viewed(id=*{id})}"
+                       th:text="#{vacancy.link.viewed}" class="btn btn-default btn-viewed" target="_blank">Text</a>
+                    <a th:title="#{vacancy.link.main.full}" th:href="@{/vacancies/{id}(id=*{id})}"
                        th:text="#{vacancy.link.main}" class="btn btn-default" target="_blank">Text</a>
-                    <a th:title="*{url}" th:href="*{url}" th:text="#{vacancy.link.external}"
+                    <a th:title="#{vacancy.link.external.full}" th:href="*{url}" th:text="#{vacancy.link.external}"
                        class="btn btn-default" target="_blank">Text</a>
                 </div>
             </td>
